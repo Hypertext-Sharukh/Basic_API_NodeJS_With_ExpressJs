@@ -2,17 +2,31 @@
 const express = require('express');
 const app = express();
 var approute =express.Router();
-app.use( express.json());
+
+// Accept Json
+approute.use( express.json());
+// Accept formdata
+approute.use( express.urlencoded({extended:false}));
+
+// Globel svar
+var result_sucess = {
+                    "status":"Sucessful"
+                    };
+
+var result_unsucess = {
+                        "status":"UnSucessful"
+                      };
 
 
-
+ var data = {
+                "data":{}
+            }[
+                    
 //Get api with Params
 
 approute.get("/fetch/:suppilerid",(res,resp) => {
         if(res.params.suppilerid=="41"){
-            resp.status('200').send({
-                "data":{}
-                })
+            resp.status('200').json(data);
         }else{
 
             resp.status('200').send("no data found");
@@ -21,16 +35,13 @@ approute.get("/fetch/:suppilerid",(res,resp) => {
 });
 
 //post api with Params
+
 approute.post('/send/:suppilerid',(res,resp) => {
     if(res.params.suppilerid=="41"){
-        resp.status('200').send({
-            "status":"UnSucessful"
-            })
+        resp.status('200').json(result_sucess);
     }else{
 
-        resp.status('200').send({
-            "status":"UNSucessful"
-            })
+        resp.status('200').json(result_unsucess);
     }    
 
 });
@@ -40,12 +51,10 @@ approute.post('/send/:suppilerid',(res,resp) => {
 
 approute.get('/fetch',(res,resp) => {
     if(res.query.suppilerid=="411"){
-        resp.status('200').send({
-            "data":{}
-            })
+        resp.status('200').json(result_sucess);
     }else{
 
-        resp.status('200').send("no data found")
+        resp.status('200').json(result_unsucess);
     }    
 
 });
@@ -56,30 +65,23 @@ approute.get('/fetch',(res,resp) => {
 //post api with query
 
 approute.post('/send',(res,resp) => {
-if(res.query.suppilerid=="411"){
-    resp.status('200').send({
-        "status":"UnSucessful"
-        })
-}else{
+    if(res.query.suppilerid=="411"){
+        resp.status('200').json(result_sucess);
+    }else{
 
-    resp.status('200').send({
-        "status":"UNSucessful"
-        })
-}    
+        resp.status('200').json(result_unsucess);
+    }      
 
 })
 
 //PUT api with Params
+
 approute.put('/modify/:suppilerid',(res,resp) => {
-    if(res.params.suppilerid=="41"){
-        resp.status('200').send({
-            "status":"Sucessful"
-            })
+    if(res.query.suppilerid=="41"){
+        resp.status('200').json(result_sucess);
     }else{
 
-        resp.status('200').send({
-            "status":"UnSucessful"
-            })
+        resp.status('200').json(result_unsucess);
     }    
 
 });
@@ -88,30 +90,23 @@ approute.put('/modify/:suppilerid',(res,resp) => {
 //PUT api with query
 
 approute.put('/modify',(res,resp) => {
-    if(res.query.suppilerid=="411"){
-        resp.status('200').send({
-            "status":"Sucessful"
-            })
+    if(res.query.suppilerid=="41"){
+        resp.status('200').json(result_sucess);
     }else{
 
-        resp.status('200').send({
-            "status":"UnSucessful"
-            })
+        resp.status('200').json(result_unsucess);
     }    
-
 });
+
 //PUT api with Params
+
 approute.delete('/delete/:photoid',(res,resp) => {
-    if(res.params.photoid=="41"){
-        resp.status('200').send({
-            "status":"Sucessful"
-            })
+    if(res.query.photoid=="411"){
+        resp.status('200').json(result_sucess);
     }else{
 
-        resp.status('200').send({
-            "status":"UnSucessful"
-            })
-    }    
+        resp.status('200').json(result_unsucess);
+    }     
 
 });
 
@@ -120,14 +115,10 @@ approute.delete('/delete/:photoid',(res,resp) => {
 
 approute.delete('/delete',(res,resp) => {
     if(res.query.photoid=="411"){
-        resp.status('200').send({
-            "status":"Sucessful"
-            })
+        resp.status('200').json(result_sucess);
     }else{
 
-        resp.status('200').send({
-            "status":"UnSucessful"
-            })
+        resp.status('200').json(result_unsucess);
     }    
 
 });
