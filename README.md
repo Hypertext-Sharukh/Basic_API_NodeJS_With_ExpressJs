@@ -9,17 +9,21 @@ Run Node app.js for a dev server.
 
 ## List of Apis in Project
 
-GET
+#GET
   http://localhost:18000/api/fetch/41
+  
   http://localhost:18000/api/fetch?suppilerid=114
-POST  
+#POST  
   http://localhost:18000/api/send/41
+  
   http://localhost:18000/api/send?suppilerid=114
-PUT 
+#PUT 
   http://localhost:18000/api/modify/41
+  
   http://localhost:18000/api/modify?suppilerid=114
-DELETE  
+#DELETE  
   http://localhost:18000/api/delete/41
+  
   http://localhost:18000/api/delete?suppilerid=114
 
 ## Further help
