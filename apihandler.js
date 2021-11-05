@@ -33,6 +33,19 @@ approute.get("/fetch/:suppilerid",(res,resp) => {
         }    
 
 });
+              
+//Get api with query
+
+approute.get('/fetch',(res,resp) => {
+    if(res.query.suppilerid=="411"){
+        resp.status('200').json(result_sucess);
+    }else{
+
+        resp.status('200').json(result_unsucess);
+    }    
+
+});
+            
 
 //post api with Params
 
@@ -45,21 +58,6 @@ approute.post('/send/:suppilerid',(res,resp) => {
     }    
 
 });
-
-
-//Get api with query
-
-approute.get('/fetch',(res,resp) => {
-    if(res.query.suppilerid=="411"){
-        resp.status('200').json(result_sucess);
-    }else{
-
-        resp.status('200').json(result_unsucess);
-    }    
-
-});
-
-
 
 
 //post api with query
@@ -77,7 +75,7 @@ approute.post('/send',(res,resp) => {
 //PUT api with Params
 
 approute.put('/modify/:suppilerid',(res,resp) => {
-    if(res.query.suppilerid=="41"){
+    if(res.params.suppilerid=="41"){
         resp.status('200').json(result_sucess);
     }else{
 
@@ -98,10 +96,10 @@ approute.put('/modify',(res,resp) => {
     }    
 });
 
-//PUT api with Params
+//DELETE api with Params
 
 approute.delete('/delete/:photoid',(res,resp) => {
-    if(res.query.photoid=="411"){
+    if(res.params.photoid=="411"){
         resp.status('200').json(result_sucess);
     }else{
 
@@ -111,7 +109,7 @@ approute.delete('/delete/:photoid',(res,resp) => {
 });
 
 
-//PUT api with query
+//DELETE api with query
 
 approute.delete('/delete',(res,resp) => {
     if(res.query.photoid=="411"){
